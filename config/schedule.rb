@@ -32,7 +32,7 @@ if rails_env == 'production'
   end
 end
 
-every 30.minutes do
+every 40.minutes do
   jobmon 'cosuka_opsworks:watch_disk_space'
 end
 

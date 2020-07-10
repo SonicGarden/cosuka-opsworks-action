@@ -1,6 +1,10 @@
 name: Cosuka Opsworks
 description: "Provide a description here"
 author: aki77
+inputs:
+  token:
+    description: GitHub token
+    required: true
 runs:
   using: "node12"
   main: "dist/index.js"
