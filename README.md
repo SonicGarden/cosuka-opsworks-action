@@ -1,5 +1,7 @@
 # Cosuka Opesworks GitHub Action
 
+![Demo](https://i.gyazo.com/cd860139d6687ff2b563e3a2240d5868.png)]
+
 ## Usage:
 
 ### Inputs
