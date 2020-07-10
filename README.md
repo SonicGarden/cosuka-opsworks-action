@@ -18,7 +18,7 @@ on:
       - config/schedule.rb
 
 jobs:
-  new-gems:
+  cosuka-opsworks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
