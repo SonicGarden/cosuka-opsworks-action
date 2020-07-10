@@ -1,16 +1,20 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {command} from 'execa'
+
+const getCrontab = async (): Promise<string> => {
+  const {stdout} = await command(
+    'bundle exec rake cosuka_opsworks:output_cron',
+    {
+      env: {RAILS_ENV: 'test', DISABLE_SPRING: 'true'}
+    }
+  )
+  return stdout
+}
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    const newCrontab = await getCrontab()
+    core.debug(newCrontab)
   } catch (error) {
     core.setFailed(error.message)
   }
