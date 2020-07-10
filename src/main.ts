@@ -33,7 +33,7 @@ const getDiff = async (baseRef: string): Promise<string> => {
   await outputCrontab(BASE_CRONTAB)
 
   try {
-    const {stdout} = await command(`diff -u ${HEAD_CRONTAB} ${BASE_CRONTAB}`)
+    const {stdout} = await command(`diff -u ${BASE_CRONTAB} ${HEAD_CRONTAB}`)
     return stdout
   } catch (error) {
     if (error.stdout) {

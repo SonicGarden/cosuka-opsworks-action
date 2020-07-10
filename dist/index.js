@@ -1484,7 +1484,7 @@ const getDiff = (baseRef) => __awaiter(void 0, void 0, void 0, function* () {
     yield subProcess;
     yield outputCrontab(BASE_CRONTAB);
     try {
-        const { stdout } = yield execa_1.command(`diff -u ${HEAD_CRONTAB} ${BASE_CRONTAB}`);
+        const { stdout } = yield execa_1.command(`diff -u ${BASE_CRONTAB} ${HEAD_CRONTAB}`);
         return stdout;
     }
     catch (error) {
