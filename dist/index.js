@@ -1472,8 +1472,8 @@ const outputCrontab = (path) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const getDiff = (baseRef) => __awaiter(void 0, void 0, void 0, function* () {
     var _b;
-    const HEAD_CRONTAB = 'tmp/head_crontab.txt';
-    const BASE_CRONTAB = 'tmp/base_crontab.txt';
+    const HEAD_CRONTAB = '/tmp/head_crontab.txt';
+    const BASE_CRONTAB = '/tmp/base_crontab.txt';
     yield outputCrontab(HEAD_CRONTAB);
     yield execa_1.default('git', ['fetch', 'origin', baseRef]);
     const subProcess = execa_1.default('git', [

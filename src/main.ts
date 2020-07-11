@@ -17,8 +17,8 @@ const outputCrontab = async (path: string): Promise<void> => {
 }
 
 const getDiff = async (baseRef: string): Promise<string> => {
-  const HEAD_CRONTAB = 'tmp/head_crontab.txt'
-  const BASE_CRONTAB = 'tmp/base_crontab.txt'
+  const HEAD_CRONTAB = '/tmp/head_crontab.txt'
+  const BASE_CRONTAB = '/tmp/base_crontab.txt'
 
   await outputCrontab(HEAD_CRONTAB)
 
