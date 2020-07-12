@@ -1,6 +1,6 @@
 {
   "name": "typescript-action",
-  "version": "0.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "TypeScript template action",
   "main": "lib/main.js",
@@ -22,12 +22,12 @@
     "node",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "aki77",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.0",
     "@actions/github": "^4.0.0",
-    "@aki77/actions-replace-comment": "^0.3.0",
+    "@aki77/actions-replace-comment": "^0.4.0",
     "execa": "^4.0.3"
   },
   "devDependencies": {

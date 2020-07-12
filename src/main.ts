@@ -9,7 +9,7 @@ const outputCrontab = async (path: string): Promise<void> => {
     'bundle',
     ['exec', 'rake', 'cosuka_opsworks:output_cron'],
     {
-      env: {RAILS_ENV: 'test', DISABLE_SPRING: 'true'}
+      env: {DISABLE_SPRING: 'true'}
     }
   )
   subprocess.stdout?.pipe(fs.createWriteStream(path))
@@ -59,7 +59,7 @@ ${diff}
 ${CODE}
 `
 
-    await replaceComment({
+    const data = await replaceComment({
       token: core.getInput('token', {required: true}),
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
@@ -67,6 +67,10 @@ ${CODE}
       issue_number: github.context.issue.number,
       body
     })
+
+    if (!data) {
+      core.debug('Already commented.')
+    }
   } catch (error) {
     core.setFailed(error.message)
   }
