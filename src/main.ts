@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+import * as os from 'os'
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 import replaceComment from '@aki77/actions-replace-comment'
@@ -33,8 +34,8 @@ const getDiff = async (baseRef: string): Promise<string> => {
   await outputCrontab(BASE_CRONTAB)
 
   try {
-    const {stdout} = await command(`diff -u ${BASE_CRONTAB} ${HEAD_CRONTAB}`)
-    return stdout
+    await command(`diff -u ${BASE_CRONTAB} ${HEAD_CRONTAB}`)
+    return ''
   } catch (error) {
     if (error.stdout) {
       return error.stdout
@@ -52,10 +53,21 @@ async function run(): Promise<void> {
     }
 
     const diff = await getDiff(process.env.GITHUB_BASE_REF)
+    if (diff === '') {
+      core.debug('No diff.')
+      return
+    }
+
+    const normalizedDiff = diff
+      .split('\n')
+      .slice(4)
+      .join('\n')
+      .replace(new RegExp(os.hostname(), 'g'), 'HOSTNAME')
+      .replace(new RegExp(process.cwd(), 'g'), 'PROJECT_DIR')
 
     const body = `## :warning: Crontab Diff!
 ${CODE}diff
-${diff}
+${normalizedDiff}
 ${CODE}
 `
 

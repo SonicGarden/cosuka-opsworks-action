@@ -1275,6 +1275,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(__webpack_require__(747));
+const os = __importStar(__webpack_require__(87));
 const core = __importStar(__webpack_require__(470));
 const github = __importStar(__webpack_require__(469));
 const actions_replace_comment_1 = __importDefault(__webpack_require__(395));
@@ -1301,8 +1302,8 @@ const getDiff = (baseRef) => __awaiter(void 0, void 0, void 0, function* () {
     yield subProcess;
     yield outputCrontab(BASE_CRONTAB);
     try {
-        const { stdout } = yield execa_1.command(`diff -u ${BASE_CRONTAB} ${HEAD_CRONTAB}`);
-        return stdout;
+        yield execa_1.command(`diff -u ${BASE_CRONTAB} ${HEAD_CRONTAB}`);
+        return '';
     }
     catch (error) {
         if (error.stdout) {
@@ -1319,9 +1320,19 @@ function run() {
                 throw new Error('GITHUB_BASE_REF is undefined.');
             }
             const diff = yield getDiff(process.env.GITHUB_BASE_REF);
+            if (diff === '') {
+                core.debug('No diff.');
+                return;
+            }
+            const normalizedDiff = diff
+                .split('\n')
+                .slice(4)
+                .join('\n')
+                .replace(new RegExp(os.hostname(), 'g'), 'HOSTNAME')
+                .replace(new RegExp(process.cwd(), 'g'), 'PROJECT_DIR');
             const body = `## :warning: Crontab Diff!
 ${CODE}diff
-${diff}
+${normalizedDiff}
 ${CODE}
 `;
             const data = yield actions_replace_comment_1.default({
