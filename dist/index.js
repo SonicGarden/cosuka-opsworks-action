@@ -3880,7 +3880,7 @@ exports.findComment = ({ token, owner, repo, issue_number, body }) => __awaiter(
 });
 exports.deleteComment = ({ token, owner, repo, issue_number, body, startsWith = false }) => __awaiter(void 0, void 0, void 0, function* () {
     const { comment_id, exactMatch } = yield exports.findComment({ token, owner, repo, issue_number, body });
-    if (comment_id && (!startsWith || exactMatch)) {
+    if (comment_id && (startsWith || exactMatch)) {
         yield issues(token).deleteComment({ owner, repo, comment_id });
     }
 });
@@ -3889,11 +3889,13 @@ exports.createComment = ({ token, owner, repo, issue_number, body }) => __awaite
 });
 function replaceComment({ token, owner, repo, issue_number, body }) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { exactMatch } = yield exports.findComment({ token, owner, repo, issue_number, body });
+        const { comment_id, exactMatch } = yield exports.findComment({ token, owner, repo, issue_number, body });
         if (exactMatch) {
             return;
         }
-        yield exports.deleteComment({ token, owner, repo, issue_number, body, startsWith: true });
+        if (comment_id) {
+            yield issues(token).deleteComment({ owner, repo, comment_id });
+        }
         return exports.createComment({ token, owner, repo, issue_number, body });
     });
 }
