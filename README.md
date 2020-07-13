@@ -1,6 +1,6 @@
 # Cosuka Opesworks GitHub Action
 
-![Demo](https://i.gyazo.com/cd860139d6687ff2b563e3a2240d5868.png)]
+![Demo](https://i.gyazo.com/d40835b0c51f48ed14bb8216d8056ceb.png)]
 
 ## Usage:
 
