@@ -1331,9 +1331,14 @@ function run() {
                 .replace(new RegExp(os.hostname(), 'g'), 'HOSTNAME')
                 .replace(new RegExp(process.cwd(), 'g'), 'PROJECT_DIR');
             const body = `## :warning: Crontab Diff!
+
+<details>
+<summary>Diff</summary>
+
 ${CODE}diff
 ${normalizedDiff}
 ${CODE}
+</details>
 `;
             const data = yield actions_replace_comment_1.default({
                 token: core.getInput('token', { required: true }),
