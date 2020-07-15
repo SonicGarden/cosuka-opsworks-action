@@ -66,9 +66,14 @@ async function run(): Promise<void> {
       .replace(new RegExp(process.cwd(), 'g'), 'PROJECT_DIR')
 
     const body = `## :warning: Crontab Diff!
+
+<details>
+<summary>Diff</summary>
+
 ${CODE}diff
 ${normalizedDiff}
 ${CODE}
+</details>
 `
 
     const data = await replaceComment({
