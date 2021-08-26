@@ -37,7 +37,8 @@ const getDiff = async (baseRef: string): Promise<string> => {
   try {
     await command(`diff -u ${BASE_CRONTAB} ${HEAD_CRONTAB}`)
     return ''
-  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     if (error.stdout) {
       return error.stdout
     }
@@ -88,7 +89,8 @@ ${CODE}
     if (!data) {
       core.debug('Already commented.')
     }
-  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     core.setFailed(error.message)
   }
 }
