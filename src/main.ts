@@ -1,8 +1,9 @@
-import * as fs from 'fs'
-import * as os from 'os'
+/* eslint-disable i18n-text/no-en,sort-imports */
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 import replaceComment from '@aki77/actions-replace-comment'
+import * as fs from 'fs'
+import * as os from 'os'
 import execa, {command} from 'execa'
 
 const outputCrontab = async (path: string): Promise<void> => {
@@ -80,7 +81,6 @@ ${CODE}
       token: core.getInput('token', {required: true}),
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
-      // eslint-disable-next-line @typescript-eslint/camelcase
       issue_number: github.context.issue.number,
       body
     })
