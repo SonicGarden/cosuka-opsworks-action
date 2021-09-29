@@ -27,7 +27,7 @@ if rails_env == 'production'
     end
   end
 
-  every 1.day, at: '7:10 am' do
+  every 1.day, at: '7:20 am' do
     backup "-t #{host_name}_log --config_file '#{backup_file}'"
   end
 end
