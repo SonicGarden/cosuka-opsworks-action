@@ -1,6 +1,6 @@
 {
-  "name": "typescript-action",
-  "version": "1.2.2",
+  "name": "cosuka-opsworks-action",
+  "version": "1.2.3",
   "private": true,
   "description": "TypeScript template action",
   "main": "lib/main.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/SonicGarden/cosuka-opsworks-action.git"
   },
   "keywords": [
     "actions",
@@ -31,19 +31,19 @@
     "execa": "^5.1.1"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
-    "@types/node": "^12.7.12",
-    "@typescript-eslint/parser": "^4.29.3",
+    "@types/jest": "^28.1.7",
+    "@types/node": "^16",
+    "@typescript-eslint/parser": "^5.33.1",
     "@zeit/ncc": "^0.22.3",
-    "eslint": "^7.32.0",
+    "eslint": "^8.22.0",
     "eslint-plugin-github": "^4.2.0",
-    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-jest": "^26.8.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.0.6",
-    "jest-circus": "^27.0.6",
+    "jest": "^28.1.3",
+    "jest-circus": "^28.1.3",
     "js-yaml": "^4.1.0",
     "prettier": "^2.3.2",
-    "ts-jest": "^27.0.5",
-    "typescript": "4.4.3"
+    "ts-jest": "^28.0.8",
+    "typescript": "4.7.4"
   }
 }

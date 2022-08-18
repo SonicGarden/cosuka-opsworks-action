@@ -1,4 +1,4 @@
-/* eslint-disable i18n-text/no-en,sort-imports */
+/* eslint-disable i18n-text/no-en */
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 import replaceComment from '@aki77/actions-replace-comment'
