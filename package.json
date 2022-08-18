@@ -1,5 +1,5 @@
 {
-  "name": "typescript-action",
+  "name": "cosuka-opsworks-action",
   "version": "1.2.2",
   "private": true,
   "description": "TypeScript template action",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/SonicGarden/cosuka-opsworks-action.git"
   },
   "keywords": [
     "actions",
